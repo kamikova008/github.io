@@ -1,48 +1,170 @@
-# Wordpress - ignore core, configuration, examples, uploads and logs.
-# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+<!DOCTYPE html>
 
-# Core
-#
-# Note: if you want to stage/commit WP core files
-# you can delete this whole section/until Configuration.
-/wp-admin/
-/wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
-/wp-includes/
-/index.php
-/license.txt
-/readme.html
-/wp-*.php
-/xmlrpc.php
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Massage Therapy</title>
 
-# Configuration
-wp-config.php
+<style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f8f6f2;
+  color: #2f3e3e;
+  cursor: pointer;
+}
 
-# Example themes
-/wp-content/themes/twenty*/
+/* Header */
+header {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #dff5f2, #f8f6f2);
+}
 
-# Example plugin
-/wp-content/plugins/hello.php
+/* Pearl title glow */
+h1 {
+  font-size: 3em;
+  position: relative;
+}
 
-# Uploads
-/wp-content/uploads/
+h1::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  top: 10px;
+  right: -20px;
+  animation: sparkle 2s infinite;
+}
 
-# Log files
-*.log
+@keyframes sparkle {
+  0% { opacity: 0; transform: scale(0.5);}
+  50% { opacity: 1; transform: scale(1.2);}
+  100% { opacity: 0; transform: scale(0.5);}
+}
 
-# htaccess
-/.htaccess
+/* Sections */
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
 
-# All plugins
-#
-# Note: If you wish to whitelist plugins,
-# uncomment the next line
-#/wp-content/plugins
+/* Arch shape */
+.arch {
+  width: 200px;
+  height: 250px;
+  margin: 20px auto;
+  background: #dff5f2;
+  border-radius: 100px 100px 20px 20px;
+}
 
-# All themes
-#
-# Note: If you wish to whitelist themes,
-# uncomment the next line
-#/wp-content/themes
+/* Buttons */
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #7ed6c2;
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #5bc0aa;
+  transform: scale(1.1);
+}
+
+/* Blog cards */
+.card {
+  width: 250px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* Pearl click effect */
+.pearl {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: radial-gradient(circle, white, #dff5f2);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: pop 0.6s ease-out;
+}
+
+@keyframes pop {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Contact */
+footer {
+  padding: 40px;
+  background: #dff5f2;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <h1>Pearl Massage</h1>
+  <p>Relaxation. Balance. Harmony.</p>
+  <button>Book Appointment</button>
+</header>
+
+<section>
+  <h2>About Me</h2>
+  <div class="arch"></div>
+  <p>I am a certified massage therapist focused on calm, healing experiences.</p>
+</section>
+
+<section>
+  <h2>Appointment</h2>
+  <p>Choose your preferred time and relax.</p>
+  <button>Open Calendar</button>
+</section>
+
+<section>
+  <h2>Blog</h2>
+  <div class="card">Massage benefits for stress</div>
+  <div class="card">How to relax your muscles</div>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p>Email: contact@massage.com</p>
+</section>
+
+<footer>
+  © 2026 Pearl Massage
+</footer>
+
+<script>
+document.addEventListener("click", function(e) {
+  let pearl = document.createElement("div");
+  pearl.className = "pearl";
+  pearl.style.left = e.pageX + "px";
+  pearl.style.top = e.pageY + "px";
+  document.body.appendChild(pearl);
+
+  setTimeout(() => {
+    pearl.remove();
+  }, 600);
+});
+</script>
+
+</body>
+</html>
