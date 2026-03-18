@@ -7,28 +7,9 @@
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-  background: #f8f6f2;
+  background: #f8f6f2; /* creamy background */
   color: #2f3e3e;
   cursor: pointer;
-  overflow-x: hidden;
-  position: relative;
-}
-
-/* Water background */
-.water {
-  position: fixed;
-  top: 0; left: 0;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 50% 50%, #dff5f2, #f8f6f2);
-  animation: wave 20s linear infinite;
-  z-index: -1;
-}
-
-@keyframes wave {
-  0% { transform: translate(-25%, -25%) rotate(0deg);}
-  50% { transform: translate(-25%, -25%) rotate(180deg);}
-  100% { transform: translate(-25%, -25%) rotate(360deg);}
 }
 
 /* Header */
@@ -36,8 +17,6 @@ header {
   text-align: center;
   padding: 80px 20px;
   background: linear-gradient(135deg, #dff5f2, #f8f6f2);
-  position: relative;
-  z-index: 1;
 }
 
 /* Pearl title glow */
@@ -68,6 +47,8 @@ h1::after {
 section {
   padding: 60px 20px;
   text-align: center;
+  position: relative;
+  z-index: 1; /* ensures content sits above anything else */
 }
 
 /* Arch shape */
@@ -89,6 +70,7 @@ button {
   font-size: 16px;
   transition: all 0.3s ease;
   cursor: pointer;
+  margin: 5px;
 }
 
 button:hover {
@@ -128,44 +110,20 @@ button:hover {
   }
 }
 
-/* Calendar modal */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-}
-
-.modal-content {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 500px;
-  text-align: center;
-}
-
 /* Contact */
 footer {
   padding: 40px;
   background: #dff5f2;
-  position: relative;
-  z-index: 1;
 }
 </style>
 </head>
 
 <body>
-<div class="water"></div>
 
 <header>
   <h1>Pearl Massage</h1>
   <p>Relaxation. Balance. Harmony.</p>
-  <button>Book Appointment</button>
+  <button onclick="window.location.href='book-appointment.html'">Book Appointment</button>
 </header>
 
 <section>
@@ -177,7 +135,7 @@ footer {
 <section>
   <h2>Appointment</h2>
   <p>Choose your preferred time and relax.</p>
-  <button id="openCalendar">Open Calendar</button>
+  <button onclick="window.location.href='calendar.html'">Open Calendar</button>
 </section>
 
 <section>
@@ -195,16 +153,6 @@ footer {
   © 2026 Pearl Massage
 </footer>
 
-<!-- Calendar Modal -->
-<div id="calendarModal" class="modal">
-  <div class="modal-content">
-    <h2>Select Your Appointment</h2>
-    <input type="date" />
-    <br><br>
-    <button id="closeCalendar">Close</button>
-  </div>
-</div>
-
 <script>
 // Pearl click effect
 document.addEventListener("click", function(e) {
@@ -215,17 +163,6 @@ document.addEventListener("click", function(e) {
   document.body.appendChild(pearl);
   setTimeout(() => pearl.remove(), 600);
 });
-
-// Calendar modal
-const openBtn = document.getElementById("openCalendar");
-const modal = document.getElementById("calendarModal");
-const closeBtn = document.getElementById("closeCalendar");
-
-openBtn.onclick = () => modal.style.display = "flex";
-closeBtn.onclick = () => modal.style.display = "none";
-window.onclick = (e) => {
-  if (e.target == modal) modal.style.display = "none";
-};
 </script>
 
 </body>
